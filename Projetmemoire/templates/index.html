@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enquête</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <form method="POST">
+                <h3>En quête</h3>
+
+                <div class="text-danger"><b>NB:</b> tous les champs obligatoires</div><br>
+
+
+
+                
+
+
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-danger alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <label for="">Situation Matrimoniale</label><br>
+                <select class="browser-default custom-select" name="smat">
+                    <option selected value="">Open this select menu</option>
+                    <option value="celibataire">Célibataire</option>
+                    <option value="marie">Marié(e)</option>
+                    <option value="divorce">Divoré(e)</option>
+                    <option value="veuf">Veuf(ve)</option>
+                </select><br><br>
+
+                <label for="">Âge</label><br>
+                <input type="number" min="0" max="100" id="exampleForm2" class="form-control" name="age"><br>
+
+                <label for="">Genre</label><br>
+                <select class="browser-default custom-select" name="genre">
+                    <option selected value="">Open this select menu</option>
+                    <option value="masculin">Masculin</option>
+                    <option value="feminin">Féminin</option>
+                </select><br><br>
+
+                <label for="">Nombre d'heure en moyen d'utilisation de votre téléphone</label><br>
+                <!-- Default inline 0-->
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline0" value="rien" name="moyenheur" checked>
+                    <label class="custom-control-label" for="defaultInline0">Rien</label>
+                </div><br>
+
+                <!-- Default inline 1-->
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline1" value="0-2" name="moyenheur">
+                    <label class="custom-control-label" for="defaultInline1">0 - 2h</label>
+                </div><br>
+                
+                <!-- Default inline 2-->
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline2" value="2-5" name="moyenheur">
+                    <label class="custom-control-label" for="defaultInline2">2h - 5h</label>
+                </div><br>
+                
+                <!-- Default inline 3-->
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline3" value="5-10" name="moyenheur">
+                    <label class="custom-control-label" for="defaultInline3">5h - 10h</label>
+                </div><br>
+
+                <!-- Default inline 4-->
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline4" value="+plus" name="moyenheur">
+                    <label class="custom-control-label" for="defaultInline4">+ plus</label>
+                </div><br><br>
+        
+                <label for="">Réseaux utilisés</label><br>
+                <!-- Default inline 0-->
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="aucun" value="aucun" name="reseau" onclick="coche();">
+                    <label class="custom-control-label" for="aucun">Aucun</label>
+                </div><br>
+
+                <!-- Default inline 1-->
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="facebook" value="facebook" name="reseau" onclick="coche();">
+                    <label class="custom-control-label" for="facebook">FaceBook</label>
+                </div><br>
+                
+                <!-- Default inline 2-->
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="whatsapp" value="whatsapp" name="reseau" onclick="coche();">
+                    <label class="custom-control-label" for="whatsapp">WhatsApp</label>
+                </div><br>
+                
+                <!-- Default inline 3-->
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="instagram" value="instagram" name="reseau" onclick="coche();">
+                    <label class="custom-control-label" for="instagram">Instagram</label>
+                </div><br>
+
+                <!-- Default inline 4-->
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="twitter" value="twitter" name="reseau" onclick="coche();">
+                    <label class="custom-control-label" for="twitter">Twitter</label>
+                </div><br>
+                
+                <!-- Default inline 5-->
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="linkedin" value="linkedin" name="reseau" onclick="coche();">
+                    <label class="custom-control-label" for="linkedin">Linkedin</label>
+                </div><br>
+                
+                <!-- Default inline 6-->
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="youtube" value="youtube" name="reseau" onclick="coche();">
+                    <label class="custom-control-label" for="youtube">YouTube</label>
+                </div><br>
+
+                <!-- Default inline 7-->
+                <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="autres" value="autres" name="reseau" onclick="coche();">
+                    <label class="custom-control-label" for="autres">Autres</label>
+                </div><br><br>
+
+                <script>
+                    function coche(){
+                       
+                    }
+                </script>
+        
+                <label for="">Situation Socio-professionnelle</label><br>
+                <select class="browser-default custom-select" name="spro">
+                    <option selected value="">Open this select menu</option>
+                    <option value="collegien">Collègien</option>
+                    <option value="etudiant">Etudiant</option>
+                    <option value="agriculteurs exploitant">Agriculteurs exploitant</option>
+                    <option value="artisans, commerçants et chefs d'entreprise">Artisans, commerçants et chefs d'entreprise</option>
+                    <option value="employe">Employés</option>
+                    <option value="ouvriers">Ouvriers</option>
+                    <option value="autres">Autres</option>
+                </select><br><br>
+
+                <input type="submit" class="btn btn-info" value="Soumettre">
+                <br> <br>
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
